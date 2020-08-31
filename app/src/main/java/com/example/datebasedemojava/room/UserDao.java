@@ -13,18 +13,19 @@ import java.util.List;
 public interface UserDao {
 
     @Query("select * from users")
-    List<User> getAll();
+    List<User> queryAll();
 
     @Query("select * from users where user_id in (:userIds)")
-    List<User> loadAllByIds(String[] userIds);
+    List<User> queryAllByIds(String[] userIds);
 
     @Insert
     void insertAll(User... users);
 
+    //冲突的解决方案
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUsers(User users);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUsers(User... users);
 
     @Delete
