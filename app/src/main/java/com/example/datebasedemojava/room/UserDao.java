@@ -18,6 +18,9 @@ public interface UserDao {
     @Query("select * from users where user_id in (:userIds)")
     List<User> queryAllByIds(String[] userIds);
 
+    @Query("select * from users where user_id = (:userId)")
+    User queryById(String userId);
+
     @Insert
     void insertAll(User... users);
 

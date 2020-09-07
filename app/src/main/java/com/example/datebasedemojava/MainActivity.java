@@ -1,7 +1,6 @@
 package com.example.datebasedemojava;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,14 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
-                    User user = new User();
-                    user.setUserId("001" + i);
-                    user.setName("哈哈" + i);
-                    user.setAge("000" + i);
-                    user.setCustomId(i);
-                    mUserDao.insertUsers(user);
-                }
+                User user = new User();
+                user.setUserId("000");
+                user.setName("哈哈");
+                user.setAge("000");
+                user.setCustomId(0);
+                mUserDao.insertUsers(user);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -64,12 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) {
-                    User user = new User();
-                    user.setName("嘻嘻嘻嘻" + i);
-                    Log.i("haha", "===i==" + i);
-                    mUserDao.updateUsers(user);
-                }
+                User user = mUserDao.queryById("0010");
+                user.setName("啦啦啦啦啦");
+                mUserDao.updateUsers(user);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -96,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }).start();
 
     }
+
     private void initDelete() {
         new Thread(new Runnable() {
             @Override
@@ -105,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mDelete.setText("删除："+users.get(0).getName());
+                        mDelete.setText("删除：" + users.get(0).getName());
                     }
                 });
             }

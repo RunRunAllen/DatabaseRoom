@@ -29,6 +29,11 @@ public class User {
     @ColumnInfo(name = "custom_Id")
     private long customId;
 
+    @ColumnInfo(name = "other_name")
+    private String otherName;
+    @ColumnInfo(name = "other_age")
+    private String otherAge;
+
     public long getId() {
         return id;
     }
@@ -67,5 +72,21 @@ public class User {
 
     public void setCustomId(long customId) {
         this.customId = customId;
+    }
+
+    public String getOtherName() {
+        return otherName == null ? "" : otherName;
+    }
+
+    public void setOtherName(String otherName) {
+        this.otherName = otherName;
+    }
+
+    public String getOtherAge() {
+        return otherAge == null ? "" : otherAge;
+    }
+
+    public void setOtherAge(String otherAge) {
+        this.otherAge = otherAge;
     }
 }
