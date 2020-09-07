@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "users")
+//@Entity(tableName = "users", foreignKeys = @ForeignKey(entity = CustomType.class, parentColumns = "custom_Id", childColumns = "id"))
 
-//@Entity(tableName = "users",primaryKeys = {"user_id"})
+@Entity(tableName = "users")
 
 // 注解声明与唯一性
 //根据访问数据的方式，您可能需要索引数据库中的某些字段以加快查询速度。若要向实体添加索引
@@ -17,6 +17,7 @@ public class User {
     // ，则可以设置@ PrimaryKey的autoGenerate属性。如果实体具有复合主键，则可以使用@Entity注解的primaryKeys属性，如下面的代码片段所示：
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private long id;
     @ColumnInfo(name = "user_id")
     private String userId;
@@ -24,6 +25,9 @@ public class User {
     private String name;
     @ColumnInfo(name = "user_age")
     private String age;
+
+    @ColumnInfo(name = "custom_Id")
+    private long customId;
 
     public long getId() {
         return id;
@@ -55,5 +59,13 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public long getCustomId() {
+        return customId;
+    }
+
+    public void setCustomId(long customId) {
+        this.customId = customId;
     }
 }

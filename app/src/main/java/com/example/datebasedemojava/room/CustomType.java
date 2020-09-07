@@ -6,10 +6,12 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "custom_users")
+@Entity(tableName = "custom")
 public class CustomType {
+
     @PrimaryKey(autoGenerate = true)
-    private long id;
+    @ColumnInfo(name = "custom_Id")
+    private long customId;
     @ColumnInfo(name = "custom_name")
     private String name;
     @ColumnInfo(name = "custom_age")
@@ -18,12 +20,12 @@ public class CustomType {
     private Date createDate;
 
 
-    public long getId() {
-        return id;
+    public long getCustomId() {
+        return customId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setCustomId(long customId) {
+        this.customId = customId;
     }
 
     public String getName() {

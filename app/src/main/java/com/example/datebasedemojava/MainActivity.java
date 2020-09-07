@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     user.setUserId("001" + i);
                     user.setName("哈哈" + i);
                     user.setAge("000" + i);
+                    user.setCustomId(i);
                     mUserDao.insertUsers(user);
                 }
                 runOnUiThread(new Runnable() {
