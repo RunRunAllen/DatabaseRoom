@@ -13,12 +13,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import static com.example.datebasedemojava.room.Constant.DATABASE_NAME;
 
-@Database(entities = {User.class, CustomType.class}, version = 3, exportSchema = false)
+@Database(entities = {User.class, Student.class, CustomType.class}, version = 1, exportSchema = false)
 @TypeConverters(DateConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
-    public abstract CustomTypeDao customTypeDao();
+    public abstract StudentDao studentDao();
 
     private static volatile AppDatabase instance;
 
@@ -39,9 +39,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 .allowMainThreadQueries()
 //                .addMigrations(Migration_1_2)
 //                .fallbackToDestructiveMigration()
-                .addMigrations(Migration_2_3)
+//                .addMigrations(Migration_2_3)
 //                .addMigrations(Migration_5_6)
-
                 .build();
     }
 
